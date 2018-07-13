@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext, gettext_lazy as _
 
-from .models import User
+from .models import User, Invoice
 
 
 class UserAdmin(UserAdmin):
@@ -10,7 +10,8 @@ class UserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name',
+            'email', 'birthdate', 'image', 'salary_rate')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -28,4 +29,9 @@ class UserAdmin(UserAdmin):
     ordering = ('email',)
 
 
+class InvoiceAdmin(admin.ModelAdmin):
+    model = Invoice
+
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Invoice, InvoiceAdmin)
