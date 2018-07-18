@@ -8,6 +8,7 @@ import { XsrfService } from './xsrf.service';
   imports: [
     CommonModule
   ],
-  declarations: [TokenService, XsrfService]
+  declarations: [],
+  providers:[TokenService, XsrfService]
 })
 export class InterceptorsModule { }

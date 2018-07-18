@@ -6,6 +6,12 @@ import { UIRouterModule } from '@uirouter/angular';
 import { CookieService } from 'ngx-cookie-service';
 
 import { UsersModule } from './components/users/users.module';
+import { PartialsModule } from './components/partials/partials.module';
+
+import { ServicesModule } from './commons/services/services.module';
+
+import { XsrfService } from './commons/services/interceptors/xsrf.service';
+import { TokenService } from './commons/services/interceptors/token.service';
 
 import { APP_STATES } from './commons/states/app.states';
 import { AppComponent } from './app.component';
@@ -19,12 +25,14 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     UIRouterModule.forRoot(APP_STATES),
 
-    UsersModule
+    ServicesModule,
+    UsersModule,
+    PartialsModule
   ],
   providers: [
     CookieService,
-    // { provide: HTTP_INTERCEPTORS, useClass: XsrfService, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: XsrfService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
