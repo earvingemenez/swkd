@@ -1,5 +1,11 @@
 *sqlite3
 *.pyc
 
+# DJANGO FILES
 media/
 static/
+
+
+# ANGULAR FILES
+*dist/
+*node_modules/

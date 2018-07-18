@@ -2,27 +2,22 @@
 
 <!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Swiftkind+</title>
+  <base href="/">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
 
-    <title>Swiftkind System</title>
-  </head>
+  <script type="text/javascript" src="{% static 'scripts/fe/dist/fe/runtime.js' %}"></script>
+  <script type="text/javascript" src="{% static 'scripts/fe/dist/fe/polyfills.js' %}"></script>
+  <script type="text/javascript" src="{% static 'scripts/fe/dist/fe/styles.js' %}"></script>
+  <script type="text/javascript" src="{% static 'scripts/fe/dist/fe/vendor.js' %}"></script>
+  <script type="text/javascript" src="{% static 'scripts/fe/dist/fe/main.js' %}"></script>
 
-  <body>
-    <nav>
-      <ul>
-        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-        <li><a href="{% url 'profile' %}">Profile</a></li>
-        <li><a href="{% url 'payroll' %}">Payroll</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-      </ul>
-    </nav>
-
-    {% block content %}
-    {% endblock %}
-  </body>
-
+</body>
 </html>
