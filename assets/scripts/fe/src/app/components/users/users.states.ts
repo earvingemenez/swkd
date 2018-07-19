@@ -1,4 +1,4 @@
-import { ContentOnly } from '../../commons/utils/layout.utils';
+import { ContentOnly, NavigationContent } from '../../commons/utils/layout.utils';
 import { LoginRequired, Disconnect } from '../../commons/utils/security.utils';
 
 import { LoginComponent } from './login/login.component';
@@ -19,7 +19,7 @@ export const USERS_STATES : Object[] = [
   {
     name   : 'dashboard',
     url    : '/dashboard/',
-    views  : ContentOnly(DashboardComponent),
+    views  : NavigationContent(DashboardComponent),
     onEnter: LoginRequired
   }
 ]
