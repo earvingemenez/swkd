@@ -1,0 +1,31 @@
+<p>{{ x}}</p>
+
+<form [formGroup]="Form.form" (ngSubmit)="update()">
+  <div>
+    <label>First Name</label>
+    <input formControlName="first_name" type="text">
+    <span [hidden]="Form.valid('first_name')">First Name is required.</span>
+  </div>
+  <div>
+    <label>Last Name</label>
+    <input formControlName="last_name" type="text">
+    <span [hidden]="Form.valid('last_name')">Last Name is required.</span>
+  </div>
+  <div>
+    <label>Email</label>
+    <input formControlName="email" type="text">
+    <span [hidden]="!Form.hasError('email', 'email')">Email is not valid.</span>
+    <span [hidden]="!Form.hasError('email', 'required')">Email is required.</span>
+  </div>
+  <div>
+    <label>Birthdate</label>
+    <input formControlName="birthdate" type="date">
+    <span [hidden]="Form.valid('birthdate')">Birthdate is required.</span>
+  </div>
+  <div>
+    <label>Image</label>
+    <input formControlName="image" type="file">
+    <span [hidden]="Form.valid('image')">Invalid image format.</span>
+  </div>
+  <button type="submit">Update Profile</button>
+</form>

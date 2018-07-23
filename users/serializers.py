@@ -86,7 +86,6 @@ class UserSerializer(serializers.ModelSerializer):
     """ user serializer
     """
     image = serializers.SerializerMethodField()
-    title = serializers.SerializerMethodField()
     display_name = serializers.SerializerMethodField()
 
     class Meta:
@@ -97,18 +96,14 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'display_name',
-            'title',
-            'bio',
-            'handle',
-            'image',
-            'subscribers',
+            'image'
         )
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
-        self.file_upload = kwargs.pop('file_upload', None)
+        self.file_upload = kwargs.pop('file_upload', False)
 
-        if kwargs.pop('file_upload', None):
+        if self.file_upload:
             self.Meta.fields = ('id', 'image')
 
         return super(UserSerializer, self).__init__(*args, **kwargs)
@@ -119,11 +114,10 @@ class UserSerializer(serializers.ModelSerializer):
 
         return super(UserSerializer, self).update(instance, data)
 
-    def get_title(self, obj):
-        return f"{obj.title}".title()
-
     def get_image(self, obj):
+        if not obj.image:
+            return None
         return f"{self.request.META['wsgi.url_scheme']}://{self.request.META['HTTP_HOST']}{obj.image.url}"
 
     def get_display_name(self, obj):
-        return obj.get_display_name()
+        return obj.get_display_name

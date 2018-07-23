@@ -5,6 +5,7 @@ import { UIRouterModule } from '@uirouter/angular';
 
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     UIRouterModule
   ],
-  declarations: [LoginComponent, DashboardComponent]
+  declarations: [LoginComponent, DashboardComponent, ProfileComponent]
 })
 export class UsersModule { }

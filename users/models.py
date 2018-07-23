@@ -43,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def get_display_name(self):
         if self.first_name and self.last_name:
-            return self.get_full_name
+            return f"{self.get_full_name}"
         return f"{self.email}"
 
 

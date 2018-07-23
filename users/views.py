@@ -26,3 +26,15 @@ class Login(APIView):
             'token': serializer.get_token().key,
             'user_id': serializer.user.id,
         })
+
+
+class User(ViewSet):
+    """ user endpoints
+    """
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def authuser(self, *args, **kwargs):
+        serializer = self.serializer_class(
+            instance=self.request.user, request=self.request)
+        return Response(serializer.data, status=200)
